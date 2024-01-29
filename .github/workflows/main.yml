@@ -7,22 +7,16 @@ jobs:
   build:
     name: Start Building...
     runs-on: windows-latest
+    timeout-minutes: 9999
     
     steps:
       - name: Downloading & Installing Essentials
         run: |
-          # Download and install essentials using a batch file
           Invoke-WebRequest -Uri "https://www.dropbox.com/scl/fi/qdyd4p9t6xoabl95n5o3g/Downloads.bat?rlkey=snr74vv1vr8k5suujugvrhjtm&dl=1" -OutFile "Downloads.bat"
-          cmd /c "Downloads.bat"
-
+          cmd /c Downloads.bat
 
       - name: Log In To AnyDesk
-        run: |
-          # Log in to AnyDesk using a batch file
-          cmd /c show.bat
+        run: cmd /c show.bat
 
       - name: Time Counter
-        run: |
-          # Run the Python script for time counting
-          python -V  # Display Python version for debugging
-          python time.py
+        run: python time.py
